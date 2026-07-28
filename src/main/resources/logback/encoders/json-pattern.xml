@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+
+    <property name="JSON_APP_NAME" value="InterviewOS"/>
+
+    <property name="JSON_ENV" value="${spring.profiles.active:-unknown}"/>
+
+</included>

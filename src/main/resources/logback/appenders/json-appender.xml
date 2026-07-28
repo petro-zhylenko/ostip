@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+
+    <appender
+            name="JSON"
+            class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder
+                class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+
+            <providers>
+
+                <timestamp/>
+
+                <logLevel/>
+
+                <threadName/>
+
+                <loggerName/>
+
+                <mdc/>
+
+                <message/>
+
+                <stackTrace/>
+
+            </providers>
+
+        </encoder>
+
+    </appender>
+
+</included>
