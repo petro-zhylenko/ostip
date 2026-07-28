@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <include resource="logback/properties.xml"/>
+
+    <include resource="logback/encoders/console-pattern.xml"/>
+
+    <include resource="logback/encoders/json-pattern.xml"/>
+
+    <include resource="logback/appenders/console-appender.xml"/>
+
+    <include resource="logback/appenders/json-appender.xml"/>
+
+    <include resource="logback/loggers.xml"/>
+
+
+    <springProfile name="dev">
+
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+
+    </springProfile>
+
+
+    <springProfile name="prod">
+
+        <root level="INFO">
+            <appender-ref ref="JSON"/>
+        </root>
+
+    </springProfile>
+
+</configuration>

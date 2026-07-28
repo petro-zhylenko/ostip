@@ -4,7 +4,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE organization (
                               id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 
-                              name VARCHAR(255) NOT NULL,
+                              name VARCHAR(255) NOT NULL UNIQUE,
 
                               created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
                               updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
@@ -17,7 +17,7 @@ CREATE TABLE app_user (
 
                           organization_id UUID,
 
-                          email VARCHAR(255) NOT NULL,
+                          email VARCHAR(255) NOT NULL UNIQUE,
                           first_name VARCHAR(100),
                           last_name VARCHAR(100),
 
@@ -42,7 +42,7 @@ CREATE TABLE candidate (
 
                            first_name VARCHAR(100) NOT NULL,
                            last_name VARCHAR(100) NOT NULL,
-                           email VARCHAR(255),
+                           email VARCHAR(255) UNIQUE,
 
                            created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
 
@@ -58,7 +58,7 @@ CREATE TABLE interview_template (
 
                                     organization_id UUID NOT NULL,
 
-                                    name VARCHAR(255) NOT NULL,
+                                    name VARCHAR(255) NOT NULL UNIQUE,
                                     description TEXT,
 
                                     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),

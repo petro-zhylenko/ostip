@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+
+    <property name="APP_NAME" value="InterviewOS"/>
+
+    <property name="LOG_PATH" value="logs"/>
+
+    <property name="ENVIRONMENT"
+              value="${spring.profiles.active:-unknown}"/>
+
+</included>

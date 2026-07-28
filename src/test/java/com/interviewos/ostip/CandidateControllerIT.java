@@ -1,5 +1,6 @@
 package com.interviewos.ostip;
 
+import com.interviewos.ostip.dto.CandidateCreateRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,6 +8,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.UUID;
 
@@ -28,17 +30,13 @@ class CandidateControllerIT {
             roles = {"ADMIN"}
     )
     void shouldCreateCandidate() throws Exception {
+        final String email = "%s@test.com".formatted(UUID.randomUUID().toString());
+        final CandidateCreateRequest test = new CandidateCreateRequest(UUID.randomUUID().toString(), UUID.randomUUID().toString(), email, "test");
+        ObjectMapper objectMapper = new ObjectMapper();
 
         mockMvc.perform(post("/api/v1/candidates")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                {
-                  "firstName":"Petro",
-                  "lastName":"Test",
-                  "email":"petro@test.com",
-                  "organization": "test"
-                }
-                """))
+                .content(objectMapper.writeValueAsString(test)))
                 .andExpect(status().isCreated());
     }
 

@@ -19,7 +19,7 @@ public class CandidateMapperServiceImpl implements CandidateMapperService {
     @Override
     public Candidate toEntity(CandidateCreateRequest request) {
         Candidate entity = mapper.toEntity(request);
-        entity.setOrganization(organizationRepo.findByNameIgnoreCase(request.organization()).orElse(createNewOrganization(request.organization())));
+        entity.setOrganization(organizationRepo.findByNameIgnoreCase(request.organization()).orElseGet(() -> createNewOrganization(request.organization())));
 
         return entity;
     }
