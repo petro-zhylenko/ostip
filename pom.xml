@@ -35,13 +35,13 @@
     </developers>
     <scm>
         <connection>
-            scm:git:git://github.com/interviewos/interviewos.git
+            scm:git:git://github.com/petro-zhylenko/interviewos.git
         </connection>
         <developerConnection>
-            scm:git:ssh://github.com/interviewos/interviewos.git
+            scm:git:ssh://github.com/petro-zhylenko/interviewos.git
         </developerConnection>
         <url>
-            https://github.com/interviewos/interviewos
+            https://github.com/petro-zhylenko/interviewos
         </url>
     </scm>
     <properties>
