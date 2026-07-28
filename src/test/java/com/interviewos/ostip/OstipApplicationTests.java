@@ -1,4 +1,4 @@
-package com.capgemini.ostip;
+package com.interviewos.ostip;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,0 +1,9 @@
+package com.interviewos.ostip.exception;
+
+import java.util.UUID;
+
+public class CandidateNotFoundException extends RuntimeException {
+    public CandidateNotFoundException(UUID message) {
+        super("Candidate not found %s".formatted(message));
+    }
+}

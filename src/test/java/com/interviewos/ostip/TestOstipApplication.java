@@ -1,4 +1,4 @@
-package com.capgemini.ostip;
+package com.interviewos.ostip;
 
 import org.springframework.boot.SpringApplication;
 
