@@ -12,6 +12,9 @@ public record CandidateCreateRequest(
         String lastName,
 
         @Email
-        String email
+        String email,
+
+        @NotBlank
+        String organization
 
 ) {}

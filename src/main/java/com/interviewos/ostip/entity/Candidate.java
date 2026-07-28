@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -40,9 +39,12 @@ public class Candidate {
     private String email;
 
     @NotNull
-    @CreatedDate
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private OffsetDateTime createdAt;
 
+    @PrePersist
+    void create(){
+        createdAt = OffsetDateTime.now();
+    }
 
 }

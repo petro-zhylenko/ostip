@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -25,15 +27,21 @@ public class Organization {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @ColumnDefault("now()")
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 
-    @NotNull
-    @ColumnDefault("now()")
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
 
+    @PrePersist
+    void create(){
+        createdAt = OffsetDateTime.now();
+        updatedAt = OffsetDateTime.now();
+    }
+
+    @PreUpdate
+    void update(){
+        updatedAt = OffsetDateTime.now();
+    }
 
 }

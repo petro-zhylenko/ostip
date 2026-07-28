@@ -35,7 +35,8 @@ class CandidateControllerIT {
                 {
                   "firstName":"Petro",
                   "lastName":"Test",
-                  "email":"petro@test.com"
+                  "email":"petro@test.com",
+                  "organization": "test"
                 }
                 """))
                 .andExpect(status().isCreated());
