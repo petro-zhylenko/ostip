@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -22,7 +24,7 @@ public class AppUser {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "organization_id", nullable = false)
+    @JoinColumn(name = "organization_id")
     private Organization organization;
 
     @Size(max = 255)
@@ -42,6 +44,25 @@ public class AppUser {
     @ColumnDefault("now()")
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
+
+    @NotNull
+    @Column(name = "password_hash")
+    private String passwordHash;
+
+    @NotNull
+    @ColumnDefault("true")
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_role",
+            joinColumns =
+            @JoinColumn(name="user_id"),
+            inverseJoinColumns =
+            @JoinColumn(name="role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
 
 }

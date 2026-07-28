@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Table(name = "candidate")
 public class Candidate {
     @Id
-    @ColumnDefault("uuid_generate_v4()")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -40,7 +40,7 @@ public class Candidate {
     private String email;
 
     @NotNull
-    @ColumnDefault("now()")
+    @CreatedDate
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 

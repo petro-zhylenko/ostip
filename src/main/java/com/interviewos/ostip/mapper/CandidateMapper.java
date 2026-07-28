@@ -11,4 +11,5 @@ public interface CandidateMapper {
     Candidate toEntity(CandidateCreateRequest request);
 
     CandidateResponse toResponse(Candidate candidate);
+
 }

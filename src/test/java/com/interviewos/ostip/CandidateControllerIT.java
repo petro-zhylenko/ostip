@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
@@ -22,6 +23,10 @@ class CandidateControllerIT {
 
 
     @Test
+    @WithMockUser(
+            username = "admin@interviewos.local",
+            roles = {"ADMIN"}
+    )
     void shouldCreateCandidate() throws Exception {
 
         mockMvc.perform(post("/api/v1/candidates")
@@ -37,6 +42,10 @@ class CandidateControllerIT {
     }
 
     @Test
+    @WithMockUser(
+            username = "admin@interviewos.local",
+            roles = {"ADMIN"}
+    )
     void shouldReturn404WhenCandidateMissing()
             throws Exception {
 

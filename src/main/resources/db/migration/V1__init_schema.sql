@@ -15,7 +15,7 @@ CREATE TABLE organization (
 CREATE TABLE app_user (
                           id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 
-                          organization_id UUID NOT NULL,
+                          organization_id UUID,
 
                           email VARCHAR(255) NOT NULL,
                           first_name VARCHAR(100),

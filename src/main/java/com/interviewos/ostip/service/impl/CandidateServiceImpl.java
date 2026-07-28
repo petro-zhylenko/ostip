@@ -1,10 +1,11 @@
-package com.interviewos.ostip.service;
+package com.interviewos.ostip.service.impl;
 
 import com.interviewos.ostip.dto.CandidateCreateRequest;
 import com.interviewos.ostip.dto.CandidateResponse;
 import com.interviewos.ostip.exception.CandidateNotFoundException;
 import com.interviewos.ostip.mapper.CandidateMapper;
 import com.interviewos.ostip.repository.CandidateRepo;
+import com.interviewos.ostip.service.CandidateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

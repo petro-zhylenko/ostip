@@ -1,3 +1,11 @@
+app:
+  security:
+    dev-user:
+      enabled: true
+      username: admin@interviewos.local
+      password: admin123
+      roles:
+        - ADMIN
 spring:
   application:
     name: ostip
