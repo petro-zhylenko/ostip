@@ -1,8 +1,9 @@
 services:
 
   postgres:
-    image: postgres:17
+    image: postgres:17-alpine
     container_name: interviewos-postgres
+    restart: unless-stopped
 
     environment:
       POSTGRES_DB: interviewos
@@ -16,5 +17,37 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 
+  mongodb:
+    image: mongo:8
+    container_name: interviewos-mongodb
+    restart: unless-stopped
+
+    environment:
+      MONGO_INITDB_DATABASE: interviewos
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongodb_data:/data/db
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: interviewos-redis
+    restart: unless-stopped
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+
+
 volumes:
+
   postgres_data:
+
+  mongodb_data:
+
+  redis_data:

@@ -1,0 +1,16 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/interviewos
+    username: interviewos
+    password: interviewos
+
+
+
+  mongodb:
+    uri: mongodb://localhost:27017/interviewos
+
+  data:
+    redis:
+      host: localhost
+      port: 6379

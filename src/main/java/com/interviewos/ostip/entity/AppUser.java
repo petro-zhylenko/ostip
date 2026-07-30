@@ -3,8 +3,7 @@ package com.interviewos.ostip.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.OffsetDateTime;
@@ -16,6 +15,9 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "app_user")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser {
     @Id
     @ColumnDefault("uuid_generate_v4()")
@@ -39,6 +41,10 @@ public class AppUser {
     @Size(max = 100)
     @Column(name = "last_name", length = 100)
     private String lastName;
+
+    @Size(max = 100)
+    @Column(name = "nickname", length = 100)
+    private String nickname;
 
     @NotNull
     @ColumnDefault("now()")
@@ -64,5 +70,8 @@ public class AppUser {
     )
     private Set<Role> roles = new HashSet<>();
 
+    public void addRole(Role role){
+        roles.add(role);
+    }
 
 }

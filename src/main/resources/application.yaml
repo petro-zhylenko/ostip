@@ -6,6 +6,16 @@ app:
       password: admin123
       roles:
         - ADMIN
+interviewos:
+  cache:
+    ttl:
+      candidates: 30m
+      interview-templates: 1h
+      organizations: 6h
+      organization-settings: 12h
+      email-verification: 15m
+      password-reset: 10m
+      login-attempts: 30m
 spring:
   profiles:
     active: dev

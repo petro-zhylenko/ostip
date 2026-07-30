@@ -15,17 +15,24 @@ CREATE TABLE organization (
 CREATE TABLE app_user (
                           id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 
-                          organization_id UUID,
+                          organization_id UUID NOT NULL,
 
                           email VARCHAR(255) NOT NULL UNIQUE,
                           first_name VARCHAR(100),
                           last_name VARCHAR(100),
-
+                          nickname VARCHAR(100) NOT NULL,
+                          password_hash VARCHAR(255) NOT NULL,
+                          enabled BOOLEAN NOT NULL DEFAULT false,
                           created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
 
                           CONSTRAINT fk_user_organization
                               FOREIGN KEY (organization_id)
-                                  REFERENCES organization(id)
+                                  REFERENCES organization(id),
+                          CONSTRAINT uk_user_org_nickname
+                              UNIQUE (
+                                      organization_id,
+                                      nickname
+                                  )
 );
 
 

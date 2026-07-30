@@ -8,11 +8,11 @@
 
     <logger
             name="org.hibernate.SQL"
-            level="DEBUG"/>
+            level="INFO"/>
 
     <logger
             name="org.hibernate.orm.jdbc.bind"
-            level="TRACE"/>
+            level="INFO"/>
 
     <logger
             name="com.interviewos.ostip"
